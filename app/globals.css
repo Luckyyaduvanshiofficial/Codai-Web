@@ -1,26 +1,204 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.375rem;
+  
+  /* GitHub Light Theme Colors */
+  --background: #ffffff;
+  --foreground: #1f2328;
+  --card: #ffffff;
+  --card-foreground: #1f2328;
+  --popover: #ffffff;
+  --popover-foreground: #1f2328;
+  
+  /* GitHub Blue - Primary color */
+  --primary: #0969da;
+  --primary-foreground: #ffffff;
+  
+  /* GitHub Gray - Secondary */
+  --secondary: #f6f8fa;
+  --secondary-foreground: #1f2328;
+  
+  /* Muted backgrounds and text */
+  --muted: #f6f8fa;
+  --muted-foreground: #656d76;
+  
+  /* Accent colors */
+  --accent: #dff7ff;
+  --accent-foreground: #0969da;
+  
+  /* Destructive (red) */
+  --destructive: #d1242f;
+  --destructive-foreground: #ffffff;
+  
+  /* Borders and inputs */
+  --border: #d0d7de;
+  --input: #d0d7de;
+  --ring: #0969da;
+  
+  /* GitHub specific colors */
+  --github-canvas-default: #ffffff;
+  --github-canvas-subtle: #f6f8fa;
+  --github-border-default: #d0d7de;
+  --github-border-muted: #d8dee4;
+  --github-fg-default: #1f2328;
+  --github-fg-muted: #656d76;
+  --github-fg-subtle: #6e7781;
+  --github-accent-fg: #0969da;
+  --github-accent-emphasis: #0969da;
+  --github-success-fg: #1a7f37;
+  --github-attention-fg: #9a6700;
+  --github-danger-fg: #d1242f;
+  
+  /* Sidebar */
+  --sidebar: #f6f8fa;
+  --sidebar-foreground: #1f2328;
+  --sidebar-primary: #0969da;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f6f8fa;
+  --sidebar-accent-foreground: #1f2328;
+  --sidebar-border: #d0d7de;
+  --sidebar-ring: #0969da;
+}
+
+.dark {
+  /* GitHub Dark Theme Colors */
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --card: #161b22;
+  --card-foreground: #e6edf3;
+  --popover: #161b22;
+  --popover-foreground: #e6edf3;
+  
+  /* GitHub Blue - Primary color (brighter in dark mode) */
+  --primary: #4493f8;
+  --primary-foreground: #ffffff;
+  
+  /* GitHub Gray - Secondary */
+  --secondary: #21262d;
+  --secondary-foreground: #e6edf3;
+  
+  /* Muted backgrounds and text */
+  --muted: #161b22;
+  --muted-foreground: #7d8590;
+  
+  /* Accent colors */
+  --accent: #1c2128;
+  --accent-foreground: #4493f8;
+  
+  /* Destructive (red) */
+  --destructive: #f85149;
+  --destructive-foreground: #ffffff;
+  
+  /* Borders and inputs */
+  --border: #30363d;
+  --input: #30363d;
+  --ring: #4493f8;
+  
+  /* GitHub Dark specific colors */
+  --github-canvas-default: #0d1117;
+  --github-canvas-subtle: #161b22;
+  --github-border-default: #30363d;
+  --github-border-muted: #21262d;
+  --github-fg-default: #e6edf3;
+  --github-fg-muted: #7d8590;
+  --github-fg-subtle: #6e7681;
+  --github-accent-fg: #4493f8;
+  --github-accent-emphasis: #4493f8;
+  --github-success-fg: #3fb950;
+  --github-attention-fg: #d29922;
+  --github-danger-fg: #f85149;
+  
+  /* Sidebar */
+  --sidebar: #161b22;
+  --sidebar-foreground: #e6edf3;
+  --sidebar-primary: #4493f8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #21262d;
+  --sidebar-accent-foreground: #e6edf3;
+  --sidebar-border: #30363d;
+  --sidebar-ring: #4493f8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "calt" 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* GitHub-style utility classes */
+@layer utilities {
+  .github-button-primary {
+    @apply bg-[#2da44e] hover:bg-[#2c974b] active:bg-[#298e46] text-white font-medium rounded-md transition-colors duration-100;
+  }
+  
+  .github-button-secondary {
+    @apply bg-[#f6f8fa] dark:bg-[#21262d] hover:bg-[#f3f4f6] dark:hover:bg-[#30363d] border border-[#d0d7de] dark:border-[#30363d] text-foreground font-medium rounded-md transition-colors duration-100;
+  }
+  
+  .github-card {
+    @apply bg-card border border-border rounded-lg hover:border-[#0969da] dark:hover:border-[#4493f8] transition-all duration-200;
+  }
+  
+  .github-link {
+    @apply text-[#0969da] dark:text-[#4493f8] hover:underline transition-all duration-100;
+  }
+  
+  .github-shadow {
+    box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+  
+  .github-shadow-dark {
+    box-shadow: 0 0 transparent, 0 0 transparent, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  .github-border {
+    @apply border border-[#d0d7de] dark:border-[#30363d];
+  }
 }
