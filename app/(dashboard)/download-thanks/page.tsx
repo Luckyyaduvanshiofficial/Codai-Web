@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { CheckCircle, Download, ExternalLink, Clock } from 'lucide-react';
@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 
-export default function DownloadThanksPage() {
+function DownloadThanksContent() {
   const searchParams = useSearchParams();
   const [countdown, setCountdown] = useState(10);
   const [downloadStarted, setDownloadStarted] = useState(false);
@@ -196,5 +196,22 @@ export default function DownloadThanksPage() {
         </Card>
       </motion.div>
     </div>
+  );
+}
+
+export default function DownloadThanksPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-blue-950 dark:to-purple-950 flex items-center justify-center p-4">
+        <div className="text-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-[#0969da] to-[#4493f8] rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30 mx-auto mb-4 animate-pulse">
+            <Download className="w-10 h-10 text-white" />
+          </div>
+          <p className="text-lg">Loading...</p>
+        </div>
+      </div>
+    }>
+      <DownloadThanksContent />
+    </Suspense>
   );
 }
