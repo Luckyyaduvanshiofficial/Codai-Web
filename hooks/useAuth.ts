@@ -74,7 +74,7 @@ export const useAuthState = () => {
 
   const loginWithOAuth = async (provider: 'github' | 'google') => {
     try {
-      const successUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/dashboard`;
+      const successUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/oauth-callback`;
       const failureUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/login`;
       
       // Note: createOAuth2Session redirects the browser, so this doesn't return a promise

@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuthState } from '@/hooks/useAuth';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Send, User, Sparkles, Copy, Check, Mic, StopCircle } from 'lucide-react';
+import { Send, User, Sparkles, Copy, Check, Mic, StopCircle, Lock } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize from 'rehype-sanitize';
@@ -42,6 +44,8 @@ const FloatingSymbol = ({ children, delay = 0 }: { children: React.ReactNode; de
 };
 
 export default function TryNowPage() {
+  const router = useRouter();
+  const { user, loading } = useAuthState();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -54,10 +58,15 @@ export default function TryNowPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Prevent hydration errors
+  // Prevent hydration errors and check authentication
   useEffect(() => {
     setMounted(true);
-  }, []);
+    
+    // Only redirect after component is mounted and auth check is complete
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [loading, user, router]);
 
   const scrollToBottom = () => {
     // Only auto-scroll if user is near bottom
@@ -262,8 +271,8 @@ export default function TryNowPage() {
     }
   };
 
-  // Prevent hydration errors by not rendering until mounted
-  if (!mounted) {
+  // Show loading state while checking authentication
+  if (!mounted || loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-blue-950 dark:to-purple-950 flex items-center justify-center">
         <div className="flex gap-2">
@@ -285,6 +294,12 @@ export default function TryNowPage() {
         </div>
       </div>
     );
+  }
+
+  // User will be redirected to login by useEffect if not authenticated
+  // This null check is just for TypeScript safety
+  if (!user) {
+    return null;
   }
 
   return (

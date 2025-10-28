@@ -13,11 +13,11 @@ export default function DownloadThanksPage() {
   const [countdown, setCountdown] = useState(10);
   const [downloadStarted, setDownloadStarted] = useState(false);
   
-  // Get download URL from env or use default
+  // Get download URL from env or use direct GitHub release URL
   const downloadUrl = process.env.NEXT_PUBLIC_DOWNLOAD_URL || 
-    'https://github.com/Luckyyaduvanshiofficial/Codai/releases/latest/download/CodaiPro-v2.1-Setup.exe';
+    'https://github.com/Luckyyaduvanshiofficial/Codai/releases/download/git-tag-v2.1.0/CodaiPro_v2.1.zip';
   
-  const fileName = searchParams.get('file') || 'CodaiPro-v2.1-Setup.exe';
+  const fileName = 'CodaiPro_v2.1.zip';
 
   const startDownload = useCallback(() => {
     setDownloadStarted(true);
