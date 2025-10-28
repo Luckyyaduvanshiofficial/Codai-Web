@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import AboutContent from './AboutContent';
 
 export const metadata: Metadata = {
   title: 'About CodaiPro - Lucky Yaduvanshi | Offline AI Coding Assistant',
@@ -16,15 +17,6 @@ export const metadata: Metadata = {
     description: 'Creator of CodaiPro, the offline AI coding assistant empowering 100K+ students worldwide.',
   },
 };
-
-function AboutContent() {
-  return (
-    <main>
-      <h1>About CodaiPro</h1>
-      <p>Meet Lucky Yaduvanshi — creator of CodaiPro, the offline AI coding assistant empowering 100K+ students worldwide.</p>
-    </main>
-  );
-}
 
 export default function AboutPage() {
   return <AboutContent />;
