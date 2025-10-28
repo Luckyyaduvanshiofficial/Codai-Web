@@ -14,8 +14,8 @@ const mainDownloads = [
     version: 'v2.1',
     size: '~2 GB',
     platform: 'Windows 10/11',
-    downloadUrl: 'https://github.com/Luckyyaduvanshiofficial/Codai/releases',
-    badge: 'Recommended',
+    downloadUrl: '/download-thanks?file=CodaiPro-v2.1-Portable.exe',
+    badge: 'Recommended-USB',
     badgeColor: 'bg-green-500',
   },
   {
@@ -25,8 +25,8 @@ const mainDownloads = [
     version: 'v2.1',
     size: '~2 GB',
     platform: 'Windows 10/11',
-    downloadUrl: 'https://github.com/Luckyyaduvanshiofficial/Codai/releases',
-    badge: 'Popular',
+    downloadUrl: '/download-thanks?file=CodaiPro-v2.1-Setup.exe',
+    badge: 'Popular-Installer',
     badgeColor: 'bg-purple-500',
   },
 ];

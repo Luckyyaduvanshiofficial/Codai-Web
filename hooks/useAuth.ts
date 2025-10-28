@@ -2,7 +2,7 @@
 
 import { useState, useEffect, createContext, useContext } from 'react';
 import { account } from '@/lib/appwrite';
-import { Models } from 'appwrite';
+import { Models, OAuthProvider } from 'appwrite';
 
 interface AuthContextType {
   user: Models.User<Models.Preferences> | null;
@@ -10,6 +10,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   register: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
+  loginWithOAuth: (provider: 'github' | 'google') => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -71,5 +72,23 @@ export const useAuthState = () => {
     }
   };
 
-  return { user, loading, login, register, logout };
+  const loginWithOAuth = async (provider: 'github' | 'google') => {
+    try {
+      const successUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/dashboard`;
+      const failureUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/login`;
+      
+      // Note: createOAuth2Session redirects the browser, so this doesn't return a promise
+      // The try-catch here catches any immediate errors before the redirect
+      account.createOAuth2Session(
+        provider as OAuthProvider,
+        successUrl,
+        failureUrl
+      );
+    } catch (error) {
+      console.error('OAuth error:', error);
+      throw error; // Re-throw so calling code can handle it
+    }
+  };
+
+  return { user, loading, login, register, logout, loginWithOAuth };
 };

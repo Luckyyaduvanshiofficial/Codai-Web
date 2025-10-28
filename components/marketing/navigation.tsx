@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Code2, ChevronDown, Sparkles, PenTool, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Code2, ChevronDown, Sparkles, PenTool, LayoutDashboard, User } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { GitHubStarButton } from '@/components/github-star-button';
 import { useAuthState } from '@/hooks/useAuth';
@@ -125,12 +125,20 @@ export function Navigation() {
               {loading ? (
                 <div className="h-9 w-[100px] bg-[var(--gh-canvas-subtle)] animate-pulse rounded-md" />
               ) : user ? (
-                <Link href="/dashboard">
-                  <Button size="sm" className="font-medium bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
-                    <LayoutDashboard className="w-4 h-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
+                <div className="flex items-center gap-2">
+                  <Link href="/profile">
+                    <Button variant="outline" size="sm" className="font-medium gap-2">
+                      <User className="w-4 h-4" />
+                      Profile
+                    </Button>
+                  </Link>
+                  <Link href="/dashboard">
+                    <Button size="sm" className="font-medium bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                      <LayoutDashboard className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                </div>
               ) : (
                 <>
                   <Link href="/login">
@@ -225,12 +233,20 @@ export function Navigation() {
               {loading ? (
                 <div className="h-10 w-full bg-gray-100 dark:bg-gray-800 animate-pulse rounded-md" />
               ) : user ? (
-                <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                  <Button className="w-full bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
-                    <LayoutDashboard className="w-4 h-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
+                <div className="space-y-2">
+                  <Link href="/dashboard" onClick={() => setIsOpen(false)}>
+                    <Button className="w-full bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                      <LayoutDashboard className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  <Link href="/profile" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" className="w-full">
+                      <User className="w-4 h-4 mr-2" />
+                      Profile
+                    </Button>
+                  </Link>
+                </div>
               ) : (
                 <>
                   <Link href="/login" onClick={() => setIsOpen(false)}>

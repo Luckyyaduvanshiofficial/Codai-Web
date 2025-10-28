@@ -5,6 +5,7 @@ import { Navigation } from "@/components/marketing/navigation";
 import { Footer } from "@/components/marketing/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SupportChat } from "@/components/support-chat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -128,6 +129,32 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Prevent theme flash on load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('codaipro-theme') || 'system';
+                  const root = document.documentElement;
+                  
+                  if (theme === 'dark') {
+                    root.classList.add('dark');
+                  } else if (theme === 'light') {
+                    root.classList.remove('dark');
+                  } else {
+                    // system theme
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                      root.classList.add('dark');
+                    } else {
+                      root.classList.remove('dark');
+                    }
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -142,6 +169,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <Toaster />
+          <SupportChat />
         </ThemeProvider>
       </body>
     </html>

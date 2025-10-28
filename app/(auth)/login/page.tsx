@@ -17,7 +17,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { login } = useAuthState();
+  const { login, loginWithOAuth } = useAuthState();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,6 +43,22 @@ export default function LoginPage() {
     }
     
     setLoading(false);
+  };
+
+  const handleOAuthLogin = async (provider: 'github' | 'google') => {
+    try {
+      setLoading(true);
+      await loginWithOAuth(provider);
+      // Note: If this line executes, the OAuth redirect didn't happen (error case)
+    } catch (error) {
+      console.error('OAuth initiation error:', error);
+      toast({
+        variant: "destructive",
+        title: "OAuth Error",
+        description: "Failed to start authentication. Please try again.",
+      });
+      setLoading(false);
+    }
   };
 
   return (
@@ -150,11 +166,23 @@ export default function LoginPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="w-full h-11" disabled>
+            <Button 
+              variant="outline" 
+              className="w-full h-11"
+              onClick={() => handleOAuthLogin('github')}
+              disabled={loading}
+              type="button"
+            >
               <Github className="mr-2 h-4 w-4" />
               GitHub
             </Button>
-            <Button variant="outline" className="w-full h-11" disabled>
+            <Button 
+              variant="outline" 
+              className="w-full h-11"
+              onClick={() => handleOAuthLogin('google')}
+              disabled={loading}
+              type="button"
+            >
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>

@@ -179,7 +179,7 @@
 /* GitHub-style utility classes */
 @layer utilities {
   .github-button-primary {
-    @apply bg-[#2da44e] hover:bg-[#2c974b] active:bg-[#298e46] text-white font-medium rounded-md transition-colors duration-100;
+    @apply bg-[#0969da] dark:bg-[#4493f8] hover:bg-[#0860ca] dark:hover:bg-[#368cf9] active:bg-[#0757ba] dark:active:bg-[#1f7eea] text-white font-medium rounded-md transition-colors duration-100;
   }
   
   .github-button-secondary {

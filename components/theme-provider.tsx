@@ -29,19 +29,25 @@ export function ThemeProvider({
   storageKey = 'codaipro-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem(storageKey) as Theme;
+      return savedTheme || defaultTheme;
+    }
+    return defaultTheme;
+  });
   const [mounted, setMounted] = useState(false);
 
-  // Load theme from localStorage only after mounting
+  // Set mounted flag
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem(storageKey) as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-  }, [storageKey]);
+  }, []);
 
+  // Apply theme to document
   useEffect(() => {
+    if (!mounted) return;
+
     const root = window.document.documentElement;
 
     root.classList.remove('light', 'dark');
@@ -56,7 +62,7 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const value = {
     theme,
