@@ -30,7 +30,7 @@ export function CTASection() {
           viewport={{ once: true }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0969da]/10 dark:bg-[#4493f8]/10 backdrop-blur-sm rounded-full border border-[#0969da]/20 dark:border-[#4493f8]/20 mb-8">
-            <Sparkles className="w-4 h-4 text-[#0969da] dark:text-[#4493f8]" />
+            <Sparkles className="w-4 h-4 text-[#0969da] dark:text-[#58a6ff]" aria-hidden="true" />
             <span className="text-sm font-medium text-[#1f2328] dark:text-[#e6edf3]">Start Your Free Trial Today</span>
           </div>
 
@@ -44,7 +44,7 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/try-now">
-              <Button size="lg" className="px-8 py-6 text-lg">
+              <Button size="lg" className="px-8 py-6 text-lg bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
                 Try Cloud IDE - Free
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

@@ -7,103 +7,103 @@ import Link from 'next/link';
 
 const plans = [
   {
-    name: 'Free Forever',
-    price: '$0',
-    period: 'forever',
-    description: 'Perfect for students and individual learners',
+    name: 'Starter',
+    price: '$3',
+    period: 'per month',
+    description: 'Perfect for casual users and beginners',
     popular: false,
+    badge: null,
     features: [
-      { text: '100% Offline AI Assistant', included: true },
-      { text: 'Code Generation & Explanation', included: true },
-      { text: 'Debugging & Optimization', included: true },
+      { text: 'Desktop Offline Version', included: true },
+      { text: '100 Cloud Requests/Day', included: true },
+      { text: 'Basic Code Generation', included: true },
+      { text: 'Code Explanation', included: true },
       { text: '20+ Programming Languages', included: true },
-      { text: 'Portable Executable', included: true },
-      { text: 'No Internet Required', included: true },
-      { text: 'Unlimited Usage', included: true },
-      { text: 'Open Source (MIT License)', included: true },
+      { text: 'Standard Response Time', included: true },
       { text: 'Community Support', included: true },
       { text: 'Regular Updates', included: true },
-      { text: 'Priority Support', included: false },
-      { text: 'Cloud IDE Access', included: false },
-      { text: 'Team Collaboration', included: false },
+      { text: 'Priority AI Processing', included: false },
+      { text: 'Advanced Code Analysis', included: false },
+      { text: 'Export & Save Conversations', included: false },
+      { text: 'Certificate Programs', included: false },
     ],
-    cta: 'Download Free',
-    ctaLink: '/downloads',
+    cta: 'Get Started',
+    ctaLink: '/register',
   },
   {
-    name: 'Student Pro',
-    price: '$9',
+    name: 'Pro',
+    price: '$10',
     period: 'per month',
-    description: 'Enhanced features for serious students',
+    description: 'Everything you need for professional development',
     popular: true,
+    badge: 'Most Popular',
     features: [
-      { text: 'Everything in Free', included: true },
-      { text: 'Cloud IDE Access', included: true },
+      { text: 'Everything in Starter', included: true },
+      { text: 'Unlimited Cloud Requests', included: true },
       { text: 'Priority AI Processing', included: true },
       { text: 'Advanced Code Analysis', included: true },
-      { text: 'Code Templates Library', included: true },
+      { text: 'Code Review Features', included: true },
+      { text: 'Export & Save Conversations', included: true },
+      { text: 'Learning Resources Library', included: true },
       { text: 'Email Support (24h response)', included: true },
-      { text: 'Project Workspace Sync', included: true },
-      { text: 'Extended AI Context', included: true },
       { text: 'Custom AI Instructions', included: true },
-      { text: 'Export Conversations', included: true },
+      { text: 'Faster Response Time', included: true },
+      { text: 'Certificate Programs', included: true },
       { text: 'Team Collaboration', included: false },
-      { text: 'API Access', included: false },
-      { text: 'Custom Integrations', included: false },
     ],
-    cta: 'Coming Soon',
-    ctaLink: '#',
+    cta: 'Get Pro',
+    ctaLink: '/register',
   },
   {
-    name: 'Professional',
-    price: '$29',
-    period: 'per month',
-    description: 'For professional developers and teams',
+    name: 'Student',
+    price: 'FREE',
+    period: 'while enrolled',
+    description: 'Full Pro access for students - worth $120/year!',
     popular: false,
+    badge: '🎓 For Students',
     features: [
-      { text: 'Everything in Student Pro', included: true },
-      { text: 'Team Collaboration (up to 10)', included: true },
-      { text: 'API Access & Integrations', included: true },
-      { text: 'Custom AI Model Training', included: true },
-      { text: 'Priority Support (1h response)', included: true },
-      { text: 'Advanced Analytics', included: true },
-      { text: 'Custom Deployment', included: true },
-      { text: 'White-label Option', included: true },
-      { text: 'Dedicated Account Manager', included: true },
-      { text: 'SLA Guarantee', included: true },
-      { text: 'Custom Features', included: true },
-      { text: 'Training Sessions', included: true },
-      { text: 'Enterprise SSO', included: true },
+      { text: 'Everything in Pro (Worth $120/year!)', included: true },
+      { text: 'Unlimited Cloud Requests', included: true },
+      { text: 'Priority AI Processing', included: true },
+      { text: 'Advanced Code Analysis', included: true },
+      { text: 'Certificate Programs', included: true },
+      { text: 'Exclusive Student Community', included: true },
+      { text: 'Learning Path Tracking', included: true },
+      { text: 'Student Resources & Tutorials', included: true },
+      { text: 'Priority Email Support', included: true },
+      { text: 'Free as long as you\'re enrolled', included: true },
+      { text: 'Verify with GitHub Student', included: true },
+      { text: 'No Credit Card Required', included: true },
     ],
-    cta: 'Coming Soon',
-    ctaLink: '#',
+    cta: 'Claim Free Access',
+    ctaLink: '/students',
   },
 ];
 
 const faqs = [
   {
-    question: 'Is CodaiPro really free forever?',
-    answer: 'Yes! The core desktop application is 100% free and open-source under MIT License. It will always remain free with no hidden costs or limitations. Premium tiers (coming soon) will offer additional cloud-based features but the offline version will always be free.',
+    question: 'Is the offline desktop version still completely free?',
+    answer: 'Yes! The desktop offline version will always remain free and open-source under MIT License. The paid plans add cloud features like online IDE, unlimited AI requests, and advanced analysis.',
   },
   {
-    question: 'What\'s the difference between Free and paid plans?',
-    answer: 'The Free version includes all core features (offline AI, code generation, debugging, 20+ languages). Paid plans (coming soon) will add cloud-based features like online IDE, team collaboration, and priority support. The offline experience remains identical.',
+    question: 'How is the Student plan different from paid plans?',
+    answer: 'Student plan gives you ALL Pro features ($10/month value) completely FREE! You get unlimited requests, priority processing, certificates, and exclusive student resources. Just verify your student status with GitHub.',
   },
   {
-    question: 'Can I use the free version for commercial projects?',
-    answer: 'Absolutely! The MIT License allows commercial use. You can use CodaiPro Free for personal projects, commercial development, freelance work, or any other purpose without restrictions.',
+    question: 'What happens to my Student account after graduation?',
+    answer: 'You can seamlessly upgrade to our $10/month Pro plan to keep all features. Your data, history, and certificates are all preserved. Many graduates stay with us!',
   },
   {
-    question: 'Do I need internet for the free version?',
-    answer: 'No! CodaiPro Free works 100% offline. All AI processing happens locally on your computer. No internet connection required, no data transmission, complete privacy.',
+    question: 'Can I switch between plans?',
+    answer: 'Yes! You can upgrade or downgrade anytime. If you\'re a student on Starter/Pro, just verify your student status to switch to the free Student plan.',
   },
   {
-    question: 'When will paid plans be available?',
-    answer: 'Student Pro and Professional plans are currently in development. They will offer cloud-based features like online IDE access, team collaboration, and API access. Join our community to get early access when they launch!',
+    question: 'What payment methods do you accept?',
+    answer: 'We accept all major credit cards, PayPal, and international payment methods. Student accounts require no payment - just GitHub verification.',
   },
   {
-    question: 'Can I upgrade or downgrade anytime?',
-    answer: 'Yes! When paid plans launch, you\'ll be able to upgrade or downgrade your subscription at any time. The free version will always be available as a fallback.',
+    question: 'Is there a free trial for paid plans?',
+    answer: 'Yes! All new users get a 7-day free trial of Pro features. No credit card required for the trial. Students get unlimited free access without any trial limits.',
   },
 ];
 
@@ -129,7 +129,7 @@ export default function PricingPage() {
             </p>
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-green-500/10 border border-green-500/20 rounded-full text-green-600 dark:text-green-400 font-semibold">
               <Sparkles className="w-5 h-5" />
-              Core features always free • No credit card required
+              Students Get Pro Free • Desktop version always free • No credit card required
             </div>
           </motion.div>
         </div>
@@ -147,15 +147,15 @@ export default function PricingPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                {plan.popular && (
+                {plan.badge && (
                   <div className="absolute -top-5 left-0 right-0 flex justify-center">
-                    <div className="bg-[var(--gh-accent-emphasis)] text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
-                      <Zap className="w-4 h-4" />
-                      Most Popular
+                    <div className={`${plan.name === 'Pro' ? 'bg-[var(--gh-accent-emphasis)]' : plan.name === 'Student' ? 'bg-green-600' : 'bg-gray-600'} text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-2`}>
+                      {plan.name === 'Pro' && <Zap className="w-4 h-4" />}
+                      {plan.badge}
                     </div>
                   </div>
                 )}
-                <Card className={`h-full ${plan.popular ? 'border-2 border-[var(--gh-accent-emphasis)] shadow-xl' : 'border-[var(--gh-border-default)]'} bg-[var(--gh-canvas-subtle)]`}>
+                <Card className={`h-full ${plan.popular || plan.name === 'Student' ? 'border-2 border-[var(--gh-accent-emphasis)] shadow-xl' : 'border-[var(--gh-border-default)]'} ${plan.name === 'Student' ? 'bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20' : 'bg-[var(--gh-canvas-subtle)]'}`}>
                   <CardHeader className="pb-8">
                     <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
                     <div className="mb-4">
@@ -168,13 +168,12 @@ export default function PricingPage() {
                     <Link href={plan.ctaLink}>
                       <button
                         className={`w-full py-3 rounded-lg font-semibold transition-colors ${
-                          plan.popular
-                            ? 'bg-[var(--gh-accent-emphasis)] hover:bg-[var(--gh-accent-emphasis)]/90 text-white'
+                          plan.popular || plan.name === 'Student'
+                            ? `${plan.name === 'Student' ? 'bg-green-600 hover:bg-green-700' : 'bg-[var(--gh-accent-emphasis)] hover:bg-[var(--gh-accent-emphasis)]/90'} text-white`
                             : 'border-2 border-[var(--gh-border-default)] hover:border-[var(--gh-accent-emphasis)] bg-[var(--gh-canvas-default)]'
                         }`}
                       >
-                        {plan.name === 'Free Forever' && <Download className="inline-block w-5 h-5 mr-2" />}
-                        {plan.cta}
+                      {plan.cta}
                       </button>
                     </Link>
                     <div className="space-y-3">

@@ -6,59 +6,93 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const plans = [
+// TypeScript interfaces for type safety
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  cta: string;
+  href: string;
+  popular?: boolean;
+  highlight?: boolean;
+}
+
+// Feature constants to avoid duplication
+const FEATURES = {
+  DESKTOP_OFFLINE: 'Desktop Offline Version',
+  CLOUD_REQUESTS_100: '100 Cloud Requests/Day',
+  CLOUD_REQUESTS_UNLIMITED: 'Unlimited Cloud Requests',
+  BASIC_CODE_GEN: 'Basic Code Generation',
+  CODE_EXPLANATION: 'Code Explanation',
+  MULTI_LANG: '20+ Programming Languages',
+  COMMUNITY_SUPPORT: 'Community Support',
+  PRIORITY_AI: 'Priority AI Processing',
+  ADVANCED_ANALYSIS: 'Advanced Code Analysis',
+  EXPORT_SAVE: 'Export & Save Conversations',
+  EMAIL_SUPPORT: 'Email Support (24h response)',
+  CUSTOM_INSTRUCTIONS: 'Custom AI Instructions',
+  EXCLUSIVE_COMMUNITY: 'Exclusive Student Community',
+  CERTIFICATES: 'Certificate Programs',
+  LEARNING_TRACKING: 'Learning Path Tracking',
+  FREE_ENROLLED: 'Free as long as you\'re enrolled',
+} as const;
+
+const plans: Plan[] = [
   {
-    name: 'Free',
-    price: '$0',
-    period: 'forever',
-    description: 'Perfect for trying out CodaiPro',
+    name: 'Starter',
+    price: '$3',
+    period: '/month',
+    description: 'Perfect for casual users and beginners',
     features: [
-      'Cloud IDE - 2 hours/day',
-      'Basic AI assistance',
-      'Limited downloads',
-      'Community support',
-      '5 projects',
+      FEATURES.DESKTOP_OFFLINE,
+      FEATURES.CLOUD_REQUESTS_100,
+      FEATURES.BASIC_CODE_GEN,
+      FEATURES.CODE_EXPLANATION,
+      FEATURES.MULTI_LANG,
+      FEATURES.COMMUNITY_SUPPORT,
     ],
-    cta: 'Try Now',
-    href: '/try-now',
+    cta: 'Get Started',
+    href: '/register',
     popular: false,
   },
   {
-    name: 'Student',
-    price: '$9',
+    name: 'Pro',
+    price: '$10',
     period: '/month',
-    description: 'For students and learners',
+    description: 'Everything you need for professional development',
     features: [
-      'Unlimited Cloud IDE access',
-      'Full desktop downloads',
-      'Advanced AI features',
-      'Priority support',
-      'Unlimited projects',
-      'Student verification required',
-      'GitHub integration',
+      'Everything in Starter',
+      FEATURES.CLOUD_REQUESTS_UNLIMITED,
+      FEATURES.PRIORITY_AI,
+      FEATURES.ADVANCED_ANALYSIS,
+      FEATURES.EXPORT_SAVE,
+      FEATURES.EMAIL_SUPPORT,
+      FEATURES.CUSTOM_INSTRUCTIONS,
     ],
-    cta: 'Get Started',
+    cta: 'Get Pro',
     href: '/register',
     popular: true,
   },
   {
-    name: 'Pro',
-    price: '$29',
-    period: '/month',
-    description: 'For professional developers',
+    name: 'Student',
+    price: 'FREE',
+    period: 'while enrolled',
+    description: 'Full Pro access for students - worth $120/year!',
     features: [
-      'Everything in Student',
-      'API access',
-      'Custom AI models',
-      'Advanced analytics',
-      'Priority features',
-      'Team collaboration',
-      'White-label options',
-      'SLA guarantee',
+      'Everything in Pro (Worth $120/year!)',
+      FEATURES.CLOUD_REQUESTS_UNLIMITED,
+      FEATURES.PRIORITY_AI,
+      FEATURES.EXCLUSIVE_COMMUNITY,
+      FEATURES.CERTIFICATES,
+      FEATURES.LEARNING_TRACKING,
+      FEATURES.FREE_ENROLLED,
     ],
-    cta: 'Go Pro',
-    href: '/register',
+    cta: '🎓 Claim Free Access',
+    href: '/students',
     popular: false,
+    highlight: true,
   },
 ];
 
@@ -94,6 +128,8 @@ export function PricingSection() {
               <Card className={`h-full relative ${
                 plan.popular 
                   ? 'border-4 border-purple-500 shadow-2xl shadow-purple-500/20' 
+                  : plan.highlight
+                  ? 'border-4 border-green-500 shadow-2xl shadow-green-500/20 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20'
                   : 'border-2'
               }`}>
                 {plan.popular && (
@@ -101,6 +137,13 @@ export function PricingSection() {
                     <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
                       <Star className="w-4 h-4 fill-current" />
                       Most Popular
+                    </div>
+                  </div>
+                )}
+                {plan.highlight && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                      🎓 For Students
                     </div>
                   </div>
                 )}
@@ -131,10 +174,12 @@ export function PricingSection() {
                       className={`w-full ${
                         plan.popular 
                           ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
+                          : plan.highlight
+                          ? 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700'
                           : ''
                       }`}
                       size="lg"
-                      variant={plan.popular ? 'default' : 'outline'}
+                      variant={plan.popular || plan.highlight ? 'default' : 'outline'}
                     >
                       {plan.cta}
                     </Button>

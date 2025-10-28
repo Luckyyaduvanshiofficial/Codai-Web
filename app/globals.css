@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -89,7 +87,10 @@
   --github-accent-fg: #0969da;
   --github-accent-emphasis: #0969da;
   --github-success-fg: #1a7f37;
+  --github-success-subtle: #dafbe1;
+  --github-success-emphasis: #1a7f37;
   --github-attention-fg: #9a6700;
+  --github-attention-subtle: #fff8c5;
   --github-danger-fg: #d1242f;
   
   /* Sidebar */
@@ -148,7 +149,10 @@
   --github-accent-fg: #4493f8;
   --github-accent-emphasis: #4493f8;
   --github-success-fg: #3fb950;
+  --github-success-subtle: #1c2d20;
+  --github-success-emphasis: #3fb950;
   --github-attention-fg: #d29922;
+  --github-attention-subtle: #261d08;
   --github-danger-fg: #f85149;
   
   /* Sidebar */
@@ -200,5 +204,42 @@
   
   .github-border {
     @apply border border-[#d0d7de] dark:border-[#30363d];
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Animated gradient for text */
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Try-Now page specific styles */
+  .try-now-fullscreen {
+    position: fixed;
+    inset: 0;
+    top: 4rem;
+    overflow: hidden;
+  }
+
+  .try-now-fullscreen ~ footer {
+    display: none;
+  }
+
+  body:has(.try-now-fullscreen) {
+    overflow: hidden;
   }
 }

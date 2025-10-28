@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Code2, ChevronDown, Sparkles, PenTool } from 'lucide-react';
+import { Menu, X, Code2, ChevronDown, Sparkles, PenTool, LayoutDashboard } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { GitHubStarButton } from '@/components/github-star-button';
+import { useAuthState } from '@/hooks/useAuth';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +17,7 @@ import {
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, loading } = useAuthState();
 
   const navLinks = [
     { href: '/features', label: 'Features' },
@@ -23,6 +25,7 @@ export function Navigation() {
     { href: '/downloads', label: 'Downloads' },
     { href: 'https://docs.codai.pro', label: 'Docs', external: true },
     { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   const products = [
@@ -32,13 +35,15 @@ export function Navigation() {
       href: '/',
       icon: Code2,
       gradient: 'from-purple-600 to-pink-600',
+      external: false,
     },
     {
       name: 'ProWriter AI',
       description: 'Professional AI Blog Writer',
-      href: '/products/prowriter',
+      href: 'https://prowriter.luckylabs.tech/',
       icon: PenTool,
       gradient: 'from-blue-600 to-cyan-600',
+      external: true,
     },
   ];
 
@@ -66,17 +71,31 @@ export function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-80 p-2">
                 {products.map((product) => (
-                  <Link key={product.href} href={product.href}>
-                    <DropdownMenuItem className="cursor-pointer p-3 rounded-md hover:bg-[#f6f8fa] dark:hover:bg-[#21262d]">
-                      <div className={`w-10 h-10 rounded-md bg-[#0969da] dark:bg-[#4493f8] flex items-center justify-center mr-3`}>
-                        <product.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="font-semibold text-sm text-[#1f2328] dark:text-[#e6edf3]">{product.name}</div>
-                        <div className="text-xs text-[#656d76] dark:text-[#7d8590]">{product.description}</div>
-                      </div>
-                    </DropdownMenuItem>
-                  </Link>
+                  product.external ? (
+                    <a key={product.href} href={product.href} target="_blank" rel="noopener noreferrer">
+                      <DropdownMenuItem className="cursor-pointer p-3 rounded-md hover:bg-[#f6f8fa] dark:hover:bg-[#21262d]">
+                        <div className={`w-10 h-10 rounded-md bg-[#0969da] dark:bg-[#4493f8] flex items-center justify-center mr-3`}>
+                          <product.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-sm text-[#1f2328] dark:text-[#e6edf3]">{product.name}</div>
+                          <div className="text-xs text-[#656d76] dark:text-[#7d8590]">{product.description}</div>
+                        </div>
+                      </DropdownMenuItem>
+                    </a>
+                  ) : (
+                    <Link key={product.href} href={product.href}>
+                      <DropdownMenuItem className="cursor-pointer p-3 rounded-md hover:bg-[#f6f8fa] dark:hover:bg-[#21262d]">
+                        <div className={`w-10 h-10 rounded-md bg-[#0969da] dark:bg-[#4493f8] flex items-center justify-center mr-3`}>
+                          <product.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-sm text-[#1f2328] dark:text-[#e6edf3]">{product.name}</div>
+                          <div className="text-xs text-[#656d76] dark:text-[#7d8590]">{product.description}</div>
+                        </div>
+                      </DropdownMenuItem>
+                    </Link>
+                  )
                 ))}
                 <DropdownMenuSeparator className="my-1" />
                 <DropdownMenuItem className="cursor-pointer text-sm text-[#0969da] dark:text-[#4493f8] font-medium rounded-md">
@@ -102,14 +121,29 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-2">
             <GitHubStarButton />
             <ThemeToggle />
-            <Link href="/login">
-              <Button variant="ghost" size="sm" className="font-medium">Sign In</Button>
-            </Link>
-            <Link href="/try-now">
-              <Button size="sm" className="font-medium">
-                Try Now
-              </Button>
-            </Link>
+            <div className="flex items-center gap-2 min-w-[200px] justify-end">
+              {loading ? (
+                <div className="h-9 w-[100px] bg-[var(--gh-canvas-subtle)] animate-pulse rounded-md" />
+              ) : user ? (
+                <Link href="/dashboard">
+                  <Button size="sm" className="font-medium bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </Button>
+                </Link>
+              ) : (
+                <>
+                  <Link href="/login">
+                    <Button variant="ghost" size="sm" className="font-medium">Sign In</Button>
+                  </Link>
+                  <Link href="/try-now">
+                    <Button size="sm" className="font-medium bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                      Try Now
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -133,20 +167,39 @@ export function Navigation() {
             <div className="px-4">
               <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Products</div>
               {products.map((product) => (
-                <Link
-                  key={product.href}
-                  href={product.href}
-                  className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 mb-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.gradient} flex items-center justify-center`}>
-                    <product.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm">{product.name}</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">{product.description}</div>
-                  </div>
-                </Link>
+                product.external ? (
+                  <a
+                    key={product.href}
+                    href={product.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 mb-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.gradient} flex items-center justify-center`}>
+                      <product.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">{product.name}</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400">{product.description}</div>
+                    </div>
+                  </a>
+                ) : (
+                  <Link
+                    key={product.href}
+                    href={product.href}
+                    className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 mb-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.gradient} flex items-center justify-center`}>
+                      <product.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">{product.name}</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400">{product.description}</div>
+                    </div>
+                  </Link>
+                )
               ))}
             </div>
 
@@ -169,16 +222,29 @@ export function Navigation() {
                 </div>
                 <ThemeToggle />
               </div>
-              <Link href="/login" onClick={() => setIsOpen(false)}>
-                <Button variant="outline" className="w-full">
-                  Sign In
-                </Button>
-              </Link>
-              <Link href="/try-now" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
-                  Try Now
-                </Button>
-              </Link>
+              {loading ? (
+                <div className="h-10 w-full bg-gray-100 dark:bg-gray-800 animate-pulse rounded-md" />
+              ) : user ? (
+                <Link href="/dashboard" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </Button>
+                </Link>
+              ) : (
+                <>
+                  <Link href="/login" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" className="w-full">
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link href="/try-now" onClick={() => setIsOpen(false)}>
+                    <Button className="w-full bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                      Try Now
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

@@ -79,24 +79,25 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
-            <Link href="/try-now">
+            <Link href="/downloads">
               <Button 
                 size="lg" 
-                className="bg-[#2da44e] hover:bg-[#2c974b] active:bg-[#298e46] text-white px-8 py-6 text-base font-medium rounded-md shadow-sm hover:shadow-md transition-all duration-100 border-0"
+                className="bg-[#0969da] hover:bg-[#0860ca] active:bg-[#0757ba] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0] text-white px-8 py-6 text-base font-medium rounded-md shadow-sm hover:shadow-md transition-all duration-100 border-0"
               >
-                Try CodaiPro Free
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Download className="mr-2 h-5 w-5" aria-hidden="true" />
+                Download Offline App
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Button>
             </Link>
             
-            <Link href="/downloads">
+            <Link href="/try-now">
               <Button 
                 size="lg" 
                 variant="outline"
                 className="bg-transparent hover:bg-[#f3f4f6] dark:hover:bg-[#21262d] border border-[#d0d7de] dark:border-[#30363d] text-[#1f2328] dark:text-[#e6edf3] px-8 py-6 text-base font-medium rounded-md transition-all duration-100"
               >
-                <Download className="mr-2 h-5 w-5" />
-                Download for Windows
+                <Zap className="mr-2 h-5 w-5" aria-hidden="true" />
+                Try Online Demo
               </Button>
             </Link>
           </motion.div>
@@ -109,19 +110,19 @@ export function HeroSection() {
             className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto"
           >
             <div className="flex items-center gap-2 text-[#656d76] dark:text-[#7d8590]">
-              <Code2 className="w-5 h-5 text-[#0969da] dark:text-[#4493f8]" />
+              <Code2 className="w-5 h-5 text-[#0969da] dark:text-[#4493f8]" aria-hidden="true" />
               <span className="text-sm font-medium">20+ Languages</span>
             </div>
             <div className="flex items-center gap-2 text-[#656d76] dark:text-[#7d8590]">
-              <Zap className="w-5 h-5 text-[#2da44e] dark:text-[#3fb950]" />
+              <Zap className="w-5 h-5 text-[#2da44e] dark:text-[#3fb950]" aria-hidden="true" />
               <span className="text-sm font-medium">Lightning Fast</span>
             </div>
             <div className="flex items-center gap-2 text-[#656d76] dark:text-[#7d8590]">
-              <Shield className="w-5 h-5 text-[#6e7781] dark:text-[#7d8590]" />
+              <Shield className="w-5 h-5 text-[#6e7781] dark:text-[#7d8590]" aria-hidden="true" />
               <span className="text-sm font-medium">100% Private</span>
             </div>
             <div className="flex items-center gap-2 text-[#656d76] dark:text-[#7d8590]">
-              <Star className="w-5 h-5 text-[#d29922] dark:text-[#d29922] fill-current" />
+              <Star className="w-5 h-5 text-[#d29922] dark:text-[#d29922] fill-current" aria-hidden="true" />
               <span className="text-sm font-medium">Free & Open Source</span>
             </div>
           </motion.div>
