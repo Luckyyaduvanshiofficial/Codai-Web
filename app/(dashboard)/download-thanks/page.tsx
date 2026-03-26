@@ -15,7 +15,7 @@ function DownloadThanksContent() {
   
   // Get download URL from env or use direct GitHub release URL
   const downloadUrl = process.env.NEXT_PUBLIC_DOWNLOAD_URL || 
-    'https://github.com/Luckyyaduvanshiofficial/Codai/releases/download/git-tag-v2.1.0/CodaiPro_v2.1.zip';
+    'https://drive.google.com/file/d/1oaRrgDhWpddXwF_UaMrTs3emgk_pamP2/';
   
   const fileName = 'CodaiPro_v2.1.zip';
 

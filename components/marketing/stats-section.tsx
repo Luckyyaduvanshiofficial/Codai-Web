@@ -1,14 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code2, Zap, Shield, Users } from 'lucide-react';
+import { Code2, Zap, Shield, Users, Github } from 'lucide-react';
 
 export function StatsSection() {
   const stats = [
-    { icon: Users, value: '100K+', label: 'Active Users', color: 'text-[#0969da] dark:text-[#4493f8]' },
-    { icon: Code2, value: '20+', label: 'Languages', color: 'text-[#2da44e] dark:text-[#3fb950]' },
-    { icon: Zap, value: '5M+', label: 'Lines of Code', color: 'text-[#bf8700] dark:text-[#d29922]' },
-    { icon: Shield, value: '100%', label: 'Privacy', color: 'text-[#8250df] dark:text-[#a371f7]' },
+    { icon: Code2, value: '20+', label: 'Languages', color: 'text-[#0969da] dark:text-[#4493f8]' },
+    { icon: Shield, value: '100%', label: 'Local Processing', color: 'text-[#2da44e] dark:text-[#3fb950]' },
+    { icon: Zap, value: 'Offline', label: 'No Internet Required', color: 'text-[#bf8700] dark:text-[#d29922]' },
+    { icon: Github, value: 'Open', label: 'Source', color: 'text-[#8250df] dark:text-[#a371f7]' },
   ];
 
   return (

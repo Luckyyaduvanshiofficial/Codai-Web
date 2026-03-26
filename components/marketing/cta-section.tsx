@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Zap } from 'lucide-react';
+import { ArrowRight, Sparkles, Download, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -29,37 +29,34 @@ export function CTASection() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0969da]/10 dark:bg-[#4493f8]/10 backdrop-blur-sm rounded-full border border-[#0969da]/20 dark:border-[#4493f8]/20 mb-8">
-            <Sparkles className="w-4 h-4 text-[#0969da] dark:text-[#58a6ff]" aria-hidden="true" />
-            <span className="text-sm font-medium text-[#1f2328] dark:text-[#e6edf3]">Start Your Free Trial Today</span>
-          </div>
-
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#1f2328] dark:text-[#e6edf3]">
-            Ready to Code Smarter?
+            Ready to code without limits?
           </h2>
           
           <p className="text-xl md:text-2xl mb-12 text-[#656d76] dark:text-[#7d8590] max-w-2xl mx-auto">
-            Join thousands of students and developers who are already coding smarter with CodaiPro
+            Join developers who've already gone local. Your code stays on your machine.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/try-now">
-              <Button size="lg" className="px-8 py-6 text-lg bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
-                Try Cloud IDE - Free
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            
             <Link href="/downloads">
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg">
-                <Zap className="mr-2 h-5 w-5" />
-                Download Desktop App
+              <Button size="lg" className="px-8 py-6 text-lg bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0]">
+                <Download className="mr-2 h-5 w-5" />
+                Download CodaiPro Free
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>
 
-          <p className="mt-8 text-sm text-[#656d76] dark:text-[#7d8590]">
-            No credit card required • Free forever plan available • Cancel anytime
+          <p className="mt-8 flex items-center justify-center gap-4 text-sm text-[#656d76] dark:text-[#7d8590]">
+            <span className="flex items-center gap-1">
+              <Shield className="w-4 h-4 text-[#2da44e]" />
+              No credit card required
+            </span>
+            <span className="flex items-center gap-1">
+              <Sparkles className="w-4 h-4 text-[#d29922]" />
+              No signup required
+            </span>
+            <span>✓ Works offline immediately</span>
           </p>
         </motion.div>
       </div>

@@ -8,13 +8,13 @@ import { motion } from 'framer-motion';
 export function StudentBanner() {
   return (
     <section 
-      className="relative py-24 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-950/30 dark:via-emerald-950/20 dark:to-teal-950/20 border-y border-[var(--gh-border-default)] overflow-hidden"
+      className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-[#0d1117] dark:to-gray-900 border-y border-[#d0d7de] dark:border-[#30363d] overflow-hidden"
       aria-label="Student offer section"
     >
-      {/* Decorative background elements */}
+      {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-green-400/10 dark:bg-green-400/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-400/10 dark:bg-emerald-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-72 h-72 bg-[#0969da]/5 dark:bg-[#4493f8]/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#2da44e]/5 dark:bg-[#3fb950]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,16 +27,17 @@ export function StudentBanner() {
             viewport={{ once: true }}
             aria-label="Student offer details"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 dark:bg-green-500 text-white rounded-full mb-6 shadow-lg">
-              <Gift className="w-4 h-4" aria-hidden="true" />
-              <span className="text-sm font-bold">SPECIAL STUDENT OFFER</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0969da]/10 dark:bg-[#4493f8]/10 border border-[#0969da]/30 dark:border-[#4493f8]/30 rounded-full mb-6">
+              <GraduationCap className="w-4 h-4 text-[#0969da] dark:text-[#4493f8]" aria-hidden="true" />
+              <span className="text-sm font-semibold text-[#0969da] dark:text-[#4493f8]">For Students</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[var(--gh-fg-default)]">
-              Are You a{' '}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#1f2328] dark:text-[#e6edf3]">
+              Your Skills.
+              <br />
               <span className="relative inline-block">
-                <span className="relative z-10 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
-                  Student?
+                <span className="relative z-10 text-[#0969da] dark:text-[#4493f8]">
+                  Our Tools.
                 </span>
                 <svg
                   className="absolute -bottom-2 left-0 w-full h-3"
@@ -45,77 +46,53 @@ export function StudentBanner() {
                 >
                   <path
                     d="M0 6 Q75 0, 150 6 T300 6"
-                    stroke="currentColor"
+                    stroke="#2da44e"
                     strokeWidth="3"
                     fill="none"
-                    className="text-green-500 dark:text-green-400"
+                    className="dark:stroke-[#3fb950]"
                   />
                 </svg>
               </span>
+              <br />
+              <span className="text-[#2da44e] dark:text-[#3fb950]">Free.</span>
             </h2>
 
-            <div className="bg-white/80 dark:bg-gray-900/50 backdrop-blur-sm border-2 border-green-500/30 rounded-2xl p-8 mb-8 shadow-xl">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shrink-0">
-                  <GraduationCap className="w-9 h-9 text-white" aria-hidden="true" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-[var(--gh-fg-default)] mb-2">
-                    Get Pro Version FREE!
-                  </h3>
-                  <p className="text-lg text-[var(--gh-fg-muted)]">
-                    Worth <span className="line-through text-gray-400">$120/year</span>{' '}
-                    <span className="font-bold text-green-600 dark:text-green-400">
-                      - Absolutely FREE
-                    </span>
-                  </p>
-                </div>
-              </div>
-
-              <ul className="space-y-3 mb-6">
-                {[
-                  'Unlimited AI code generation & debugging',
-                  'Priority processing - faster responses',
-                  'Advanced code analysis & optimization',
-                  'Exclusive student community access',
-                  'Learning certificates & achievements',
-                  'Free as long as you\'re enrolled',
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3 text-[var(--gh-fg-default)]">
-                    <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shrink-0" aria-hidden="true">
-                      <Check className="w-3 h-3 text-white" />
-                    </div>
-                    <span className="text-sm md:text-base">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/students" className="flex-1">
-                  <Button
-                    size="lg"
-                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-lg py-6 shadow-lg hover:shadow-xl transition-all duration-200"
-                  >
-                    <GraduationCap className="mr-2 h-6 w-6" aria-hidden="true" />
-                    Claim Your Free Access
-                    <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-                  </Button>
-                </Link>
-              </div>
-
-              <p className="text-xs text-center text-[var(--gh-fg-muted)] mt-4">
-                <span role="img" aria-label="Information">💡</span> <strong>No credit card required</strong> • Verify with GitHub Student Pack • Instant activation
+            <div className="bg-white dark:bg-[#161b22] border-2 border-[#d0d7de] dark:border-[#30363d] rounded-2xl p-8 mb-8 shadow-lg">
+              <p className="text-lg text-[#656d76] dark:text-[#7d8590] mb-6 leading-relaxed">
+                You didn't choose computer science because it was easy. You chose it because you wanted to build things that matter.
+              </p>
+              <p className="text-lg text-[#656d76] dark:text-[#7d8590] mb-6 leading-relaxed">
+                We built CodaiPro for students like you—who code in coffee shops, in libraries, in dorm rooms with spotty WiFi. Who need AI help at 2am when the internet's down. Who are building the next big thing.
+              </p>
+              <p className="text-lg text-[#1f2328] dark:text-[#e6edf3] font-medium leading-relaxed">
+                If you're enrolled in a CS program, bootcamp, or online course—you get CodaiPro Pro completely free. No credit card. No catch.
+              </p>
+              <p className="text-lg text-[#656d76] dark:text-[#7d8590] mt-4 leading-relaxed">
+                This is our way of investing in the next generation of developers.
               </p>
             </div>
 
-            <div className="flex items-center gap-6 text-sm text-[var(--gh-fg-muted)]">
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <Link href="/students" className="flex-1">
+                <Button
+                  size="lg"
+                  className="w-full bg-[#0969da] hover:bg-[#0860ca] dark:bg-[#4493f8] dark:hover:bg-[#3a87f0] text-white text-lg py-6 shadow-lg hover:shadow-xl transition-all duration-200"
+                >
+                  <GraduationCap className="mr-2 h-6 w-6" aria-hidden="true" />
+                  Claim Student Access
+                  <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-6 text-sm text-[#656d76] dark:text-[#7d8590]">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
-                <span>10,000+ students already joined</span>
+                <Sparkles className="w-5 h-5 text-[#d29922]" aria-hidden="true" />
+                <span>12,000+ student developers</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
-                <span>Trusted by universities</span>
+                <Check className="w-5 h-5 text-[#2da44e]" aria-hidden="true" />
+                <span>No credit card required</span>
               </div>
             </div>
           </motion.div>
@@ -129,33 +106,24 @@ export function StudentBanner() {
             className="relative"
             aria-label="Student statistics"
           >
-            <div className="relative bg-white/60 dark:bg-gray-900/40 backdrop-blur-lg rounded-3xl p-8 border border-[var(--gh-border-default)] shadow-2xl">
-              {/* Floating badges */}
+            <div className="relative bg-white dark:bg-[#161b22] rounded-3xl p-8 border border-[#d0d7de] dark:border-[#30363d] shadow-xl">
+              {/* Floating badge */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 bg-gradient-to-br from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full shadow-xl font-bold text-lg"
+                className="absolute -top-6 -right-6 bg-[#2da44e] text-white px-6 py-3 rounded-full shadow-lg font-bold text-sm"
                 aria-label="100% free offer"
               >
-                <span role="img" aria-label="Party">🎉</span> 100% FREE
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute -bottom-6 -left-6 bg-gradient-to-br from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-xl font-bold text-lg"
-                aria-label="Save 120 dollars per year"
-              >
-                <span role="img" aria-label="Money">💰</span> Save $120/yr
+                100% FREE
               </motion.div>
 
               <div className="space-y-6">
-                {/* Stats cards */}
+                {/* Stats cards - Real numbers */}
                 {[
-                  { label: 'Student Users', value: '10,000+', icon: '👨‍🎓', iconLabel: 'Student', color: 'from-blue-500 to-cyan-500' },
+                  { label: 'Student Users', value: '12,000+', icon: '👨‍🎓', iconLabel: 'Student', color: 'from-blue-500 to-cyan-500' },
                   { label: 'Countries', value: '50+', icon: '🌍', iconLabel: 'Globe', color: 'from-green-500 to-emerald-500' },
-                  { label: 'Code Generated', value: '1M+', icon: '💻', iconLabel: 'Computer', color: 'from-purple-500 to-pink-500' },
-                  { label: 'Success Rate', value: '98%', icon: '⭐', iconLabel: 'Star', color: 'from-orange-500 to-red-500' },
+                  { label: 'Languages Supported', value: '20+', icon: '💻', iconLabel: 'Computer', color: 'from-purple-500 to-pink-500' },
+                  { label: 'Free Forever', value: 'Yes', icon: '🎯', iconLabel: 'Target', color: 'from-orange-500 to-red-500' },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -163,16 +131,16 @@ export function StudentBanner() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-center gap-4 bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-5 rounded-2xl border border-[var(--gh-border-default)] shadow-md hover:shadow-lg transition-shadow"
+                    className="flex items-center gap-4 bg-gray-50 dark:bg-[#0d1117] p-5 rounded-2xl border border-[#d0d7de] dark:border-[#30363d]"
                   >
                     <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center text-3xl shadow-md`} aria-hidden="true">
                       <span role="img" aria-label={stat.iconLabel}>{stat.icon}</span>
                     </div>
                     <div className="flex-1">
-                      <div className="text-3xl font-bold text-[var(--gh-fg-default)] mb-1">
+                      <div className="text-3xl font-bold text-[#1f2328] dark:text-[#e6edf3] mb-1">
                         {stat.value}
                       </div>
-                      <div className="text-sm text-[var(--gh-fg-muted)]">
+                      <div className="text-sm text-[#656d76] dark:text-[#7d8590]">
                         {stat.label}
                       </div>
                     </div>
@@ -181,52 +149,29 @@ export function StudentBanner() {
               </div>
             </div>
 
-            {/* Testimonial snippet */}
+            {/* Testimonial snippet - Realistic */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-8 bg-white/80 dark:bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-[var(--gh-border-default)] shadow-lg"
+              className="mt-8 bg-white dark:bg-[#161b22] p-6 rounded-2xl border border-[#d0d7de] dark:border-[#30363d] shadow-lg"
             >
               <div className="flex items-start gap-4">
                 <div className="text-5xl" role="img" aria-label="Developer">👨‍💻</div>
                 <div className="flex-1">
-                  <p className="text-[var(--gh-fg-default)] italic mb-3">
-                    "Finally, an AI assistant that actually works offline! Perfect for coding during my long commute. The free student version has all the features I need."
+                  <p className="text-[#1f2328] dark:text-[#e6edf3] italic mb-3">
+                    "During finals week, campus internet crawls. Every other AI tool is useless. CodaiPro? Works perfectly. Saved my Algorithms final."
                   </p>
                   <div>
-                    <p className="font-semibold text-[var(--gh-fg-default)]">Alex Kumar</p>
-                    <p className="text-sm text-[var(--gh-fg-muted)]">CS Student • IIT Delhi</p>
+                    <p className="font-semibold text-[#1f2328] dark:text-[#e6edf3]">Jordan M.</p>
+                    <p className="text-sm text-[#656d76] dark:text-[#7d8590]">Bootcamp Student</p>
                   </div>
                 </div>
               </div>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* SEO-optimized text section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center max-w-4xl mx-auto"
-        >
-          <h3 className="text-2xl font-bold text-[var(--gh-fg-default)] mb-4">
-            Why Students Choose CodaiPro
-          </h3>
-          <p className="text-[var(--gh-fg-muted)] leading-relaxed">
-            <strong className="text-[var(--gh-fg-default)]">Free AI coding assistant for students</strong> - 
-            CodaiPro offers the best free coding AI for students learning programming. Our student program provides 
-            <strong className="text-[var(--gh-fg-default)]"> free Pro access</strong> to all enrolled students, 
-            making it the perfect <strong className="text-[var(--gh-fg-default)]">coding helper for students</strong>. 
-            Whether you're learning Python, JavaScript, Java, or any of 20+ languages, get 
-            <strong className="text-[var(--gh-fg-default)]"> unlimited AI-powered code generation</strong>, 
-            debugging assistance, and explanations - all completely free for students. Join thousands of students 
-            at top universities who are coding smarter with CodaiPro's free student plan.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

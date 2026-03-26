@@ -107,11 +107,11 @@ export function PricingSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
-            Simple, Transparent Pricing
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#1f2328] dark:text-[#e6edf3]">
+            Simple, transparent pricing
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Choose the plan that's right for you. All plans include our core AI features.
+          <p className="text-xl text-[#656d76] dark:text-[#7d8590] max-w-3xl mx-auto">
+            Choose what works for you. All plans include offline capability.
           </p>
         </motion.div>
 

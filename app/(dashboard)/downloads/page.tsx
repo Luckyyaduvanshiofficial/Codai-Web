@@ -14,7 +14,7 @@ const mainDownloads = [
     version: 'v2.1',
     size: '~2 GB',
     platform: 'Windows 10/11',
-    downloadUrl: 'https://github.com/Luckyyaduvanshiofficial/Codai/releases/download/git-tag-v2.1.0/CodaiPro_v2.1.zip',
+    downloadUrl: 'https://drive.google.com/file/d/1oaRrgDhWpddXwF_UaMrTs3emgk_pamP2/',
     badge: 'Recommended-USB',
     badgeColor: 'bg-green-500',
   },
